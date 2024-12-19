@@ -1,6 +1,6 @@
 def get_exchange_rates():
-    """Συναλαγματικές ισοτιμίες που ισχύουν σήμερα στις 19/12/2024 με βάση το ευρώ (EUR) από την Ευρωμαϊη Κεντρική Τράπεζα https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html """
-    return{
+    """Συναλλαγματικές ισοτιμίες που ισχύουν σήμερα στις 19/12/2024 με βάση το ευρώ (EUR) από την Ευρωπαϊκή Κεντρική Τράπεζα https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html """
+    return {
         "EUR": 1.0,  # Το ευρώ είναι το βασικό νόμισμα
         "USD": 1.0395,
         "JPY": 163.07,
@@ -32,43 +32,43 @@ def get_exchange_rates():
         "SGD": 1.4131,
         "THB": 35.946,
         "ZAR": 19.0350
-     }
+    }
 
-def convert_currency(amount, from_currency, to_currency,rates):
-     """Αν ο χρήστης δώσει ίδιο νόμισμα για μετατροπή τότε του επιστρέφει το αρχικό ποσό"""
-     if from_currency == to_currency:
+def convert_currency(amount, from_currency, to_currency, rates):
+    """Αν ο χρήστης δώσει ίδιο νόμισμα για μετατροπή τότε του επιστρέφει το αρχικό ποσό"""
+    if from_currency == to_currency:
         return amount
-    
-     """Ελέγχει αν το νόμισμα προέλευσης, ή μετατροπής δεν υπάρχει στο λεξικό rates."""
-     if from_currency not in rates or to_currency not in rates:
+
+    """Ελέγχει αν το νόμισμα προέλευσης ή μετατροπής δεν υπάρχει στο λεξικό rates."""
+    if from_currency not in rates or to_currency not in rates:
         return f"Μη έγκυροι κωδικοί νομισμάτων: {from_currency} ή {to_currency}"
 
-     """Επειδή τα rates είναι με βάση το ευρώ το νόμισμα θα μετατραπεί πρώτα σε ευρώ και έπειτα θα μετατραπεί στο νόμισμα που ζητείται"""
-     amount_in_euros = amount / rates [from_currency]
-     converted_amount = amount_in_euros*rates[to_currency]
-     return converted_amount 
-  
+    """Επειδή τα rates είναι με βάση το ευρώ, το νόμισμα θα μετατραπεί πρώτα σε ευρώ και έπειτα θα μετατραπεί στο νόμισμα που ζητείται"""
+    amount_in_euros = amount / rates[from_currency]
+    converted_amount = amount_in_euros * rates[to_currency]
+    return converted_amount
+
 def main():
-     print("Καλωσήρθατε στον Μετατροπέα Νομισμάτων")
-     rates = get_exchange_rates()
- 
-     try:
-       amount = float(input("Εισάγετε το ποσό που θέλετε να μετατρέψετε:"))
-       from_currency = input("Εισάγεται το νόμισμα από το οποίο θέλετε να μετατρέψετε (π.χ. EUR, USD, KRW κλπ.)")
-       to_currency = input("Εισάγετε το νόμισμα στο οποίο θέλετε να μετατρέψετε (π.χ. CAD, MYR, ILS κλπ.)")
+    print("Καλωσήρθατε στον Μετατροπέα Νομισμάτων")
+    rates = get_exchange_rates()
 
-       result = convert_currency(amount,from_currency, to_currency, rates)
+    try:
+        amount = float(input("Εισάγετε το ποσό που θέλετε να μετατρέψετε: "))
+        from_currency = input("Εισάγετε το νόμισμα από το οποίο θέλετε να μετατρέψετε (π.χ. EUR, USD, KRW κλπ.): ").upper()
+        to_currency = input("Εισάγετε το νόμισμα στο οποίο θέλετε να μετατρέψετε (π.χ. CAD, MYR, ILS κλπ.): ").upper()
 
-       """Ελέγχει αν το result είναι τύπου string"""
-       if isinstance(result,str):
-           print(result)
-       else:
-           print(f"Το ποσό μετατροπής είναι: {result:.2f} {to_currency}")
+        result = convert_currency(amount, from_currency, to_currency, rates)
 
-     except ValueError as e:
-         print("Σφάλμα: Εισάγατε μη έγκυρα δεδομένα.")
-     except Exception:
+        """Ελέγχει αν το result είναι τύπου string"""
+        if isinstance(result, str):
+            print(result)
+        else:
+            print(f"Το ποσό μετατροπής είναι: {result:.2f} {to_currency}")
+
+    except ValueError as e:
+        print("Σφάλμα: Εισάγατε μη έγκυρα δεδομένα.")
+    except Exception:
         print("Παρουσιάστηκε σφάλμα.")
 
-
-        
+if __name__ == "__main__":
+    main()
