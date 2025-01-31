@@ -1,37 +1,37 @@
 def get_exchange_rates():
-    """Συναλλαγματικές ισοτιμίες που ισχύουν σήμερα στις 19/12/2024 με βάση το ευρώ (EUR) από την Ευρωπαϊκή Κεντρική Τράπεζα https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html """
+    """"Συναλλαγματικές ισοτιμίες που ισχύουν σήμερα στις 27/01/2025 με βάση το ευρώ (EUR) από την Ευρωπαϊκή Κεντρική Τράπεζα. """
     return {
         "EUR": 1.0,  # Το ευρώ είναι το βασικό νόμισμα
-        "USD": 1.0395,
-        "JPY": 163.07,
+        "USD": 1.0530,
+        "JPY": 162.21,
         "BGN": 1.9558,
-        "CZK": 25.127,
-        "DKK": 7.4613,
-        "GBP": 0.82445,
-        "HUF": 416.05,
-        "PLN": 4.2500,
-        "RON": 4.9760,
-        "SEK": 11.4625,
-        "CHF": 0.9319,
-        "ISK": 144.70,
-        "NOK": 11.8143,
-        "TRY": 36.4565,
-        "AUD": 1.6631,
-        "BRL": 6.5335,
-        "CAD": 1.4930,
-        "CNY": 7.5858,
-        "HKD": 8.0785,
-        "IDR": 16957.88,
-        "ILS": 3.7647,
-        "INR": 88.4810,
-        "KRW": 1505.30,
-        "MXN": 21.1339,
-        "MYR": 4.6835,
-        "NZD": 1.8387,
-        "PHP": 61.396,
-        "SGD": 1.4131,
-        "THB": 35.946,
-        "ZAR": 19.0350
+        "CZK": 25.102,
+        "DKK": 7.4625,
+        "GBP": 0.84106,
+        "HUF": 408.78,
+        "PLN": 4.2193,
+        "RON": 4.9750,
+        "SEK": 11.4960,
+        "CHF": 0.9453,
+        "ISK": 146.30,
+        "NOK": 11.8095,
+        "TRY": 37.6265,
+        "AUD": 1.6700,
+        "BRL": 6.2375,
+        "CAD": 1.5096,
+        "CNY": 7.6306,
+        "HKD": 8.1987,
+        "IDR": 17007.37,
+        "ILS": 3.8064,
+        "INR": 90.8800,
+        "KRW": 1507.97,
+        "MXN": 21.5878,
+        "MYR": 4.6106,
+        "NZD": 1.8464,
+        "PHP": 61.408,
+        "SGD": 1.4134,
+        "THB": 35.402,
+        "ZAR": 19.6537
     }
 
 def convert_currency(amount, from_currency, to_currency, rates):
@@ -48,7 +48,7 @@ def convert_currency(amount, from_currency, to_currency, rates):
     converted_amount = amount_in_euros * rates[to_currency]
     return converted_amount
 
-def main():
+def user_input():
     print("Καλωσήρθατε στον Μετατροπέα Νομισμάτων")
     rates = get_exchange_rates()
 
@@ -71,4 +71,4 @@ def main():
         print("Παρουσιάστηκε σφάλμα.")
 
 if __name__ == "__main__":
-    main()
+    user_input()

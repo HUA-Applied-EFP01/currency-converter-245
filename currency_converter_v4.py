@@ -10,6 +10,8 @@ exchange_rates = {
 
 # Συνάρτηση για τη μετατροπή νομισμάτων
 def convert_currency(amount, from_currency, to_currency):
+
+    # Ελέγχουμε αν τα νομίσματα είναι έγκυρα 
     if from_currency not in exchange_rates or to_currency not in exchange_rates:
         return f"Λάθος νόμισμα. Τα διαθέσιμα νομίσματα είναι: {', '.join(exchange_rates.keys())}"
    
@@ -46,7 +48,7 @@ def user_input():
             print(f"Το ποσό των {amount} {from_currency} ισούται με {result} {to_currency}.")
         
         # Ρώτα τον χρήστη αν θέλει να συνεχίσει
-        again = input("Θέλετε να κάνετε άλλη μετατροπή; (ναι/όχι): ").lower()
+        again = input("Θέλετε να κάνετε άλλη μετατροπή; (ναι/όχι): ").strip().lower()
         if again != "ναι":
             print("Ευχαριστούμε που χρησιμοποιήσατε τον μετατροπέα νομισμάτων!")
             break
